@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "malatium[plot]>=0.1.0",
-    "ml-data>=0.1.0",
+    "ml-data-access>=0.1.0",
     "polars>=1.30",
 ]
 
@@ -21,7 +21,7 @@ package = false
 
 [tool.uv.sources]
 malatium = { git = "https://github.com/Atium-Research/malatium" }
-ml-data = { git = "https://github.com/Atium-Research/ml-data" }
+ml-data-access = { git = "https://github.com/Atium-Research/ml-data-access" }
 
 [tool.ruff]
 line-length = 100
