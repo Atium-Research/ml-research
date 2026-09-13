@@ -1,0 +1,31 @@
+[project]
+name = "ml-research"
+version = "0.1.0"
+description = "Volatility research on the malatium stack."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "malatium[plot]>=0.1.0",
+    "ml-data>=0.1.0",
+    "polars>=1.30",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+malatium = { git = "https://github.com/Atium-Research/malatium" }
+ml-data = { git = "https://github.com/Atium-Research/ml-data" }
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
