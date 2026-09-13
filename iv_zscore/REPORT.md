@@ -3,7 +3,7 @@
 Buy names whose ATM implied vol is cheap relative to their own history, sell those rich. Score: each name's log 60-day ATM IV against its trailing 250-session mean and std (at least 120 sessions), clipped at ±3; positive means rich. Books: a quantile spread (long the cheapest decile, short the richest, equal weight) and two mean-variance books (alpha = −0.04 × idio vol × score against the stored factor risk model, net-vega neutral, with and without factor neutrality). Weekly rebalance on the previous session's score, $20k gross vega, 2018-07-02 to 2025-06-30, S&P 500 point-in-time universe, wrong-company symbol-years removed. malatium 0.2.0.
 
 ```sh
-uv run python iv_zscore/study.py     # ~3 min; writes results/ and figures/
+uv run python -m iv_zscore.study     # ~3 min; writes results/ and figures/
 ```
 
 ## Result: no edge
@@ -16,7 +16,7 @@ uv run python iv_zscore/study.py     # ~3 min; writes results/ and figures/
 
 No book has a significant intercept. Every book carries a significant short market-vol loading, which factor neutrality on the stored loadings does not remove. Net of the full EOD half-spread on every fill plus the reference path's roll and hedge costs, every book loses more than $46M (see Costs).
 
-![equity curves](figures/equity_curves.png)
+![equity curves](figures/equity_iv_zscore.png)
 
 ## The decile table says why
 
@@ -30,7 +30,7 @@ Forward 60-session P&L per dollar of vega of the long reference straddle, entere
 
 A U, not a slope. The cheapest-for-itself decile earns the *least*, the richest earns more than it, and the middle earns most. High IV relative to a name's own past is as often the start of a vol episode as the end of one, and low-for-itself IV is quiet vol that stays quiet. A long-cheap, short-rich book has nothing to harvest here, which is what the books show.
 
-![deciles](figures/deciles.png)
+![deciles](figures/deciles_iv_zscore.png)
 
 ## Why the engine lags the score, and what the same-day version showed
 
@@ -69,4 +69,4 @@ The median half-spread on the reference straddle is 1.27 per dollar of vega, so 
 | `results/deciles.csv` | the decile table |
 | `results/annual.csv` | gross P&L by year |
 | `results/book_series.csv` | daily gross P&L, gross and net vega, positions, per book |
-| `figures/equity_curves.png`, `figures/deciles.png` | the two figures |
+| `figures/equity_iv_zscore.png`, `figures/deciles_iv_zscore.png` | the two figures |

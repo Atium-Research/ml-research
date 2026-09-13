@@ -26,9 +26,16 @@ start, end = dt.date(2018, 7, 2), dt.date(2025, 6, 30)
 reference_df = ml_data_access.load_reference_returns(db, start, end)
 scores_df = ml_data_access.load_signals(db, "vrp", start, end)
 
-strategy = QuantileSpreadStrategy(PanelProvider(scores_df), PanelProvider(ml_data_access.load_universe(db, start, end)))
+strategy = QuantileSpreadStrategy(
+    PanelProvider(scores_df), PanelProvider(ml_data_access.load_universe(db, start, end))
+)
 records_df = Backtester().run(
-    TradingCalendar(ml_data_access.load_sessions(db)), PanelProvider(reference_df), strategy, start, end, gross_vega=20_000.0
+    TradingCalendar(ml_data_access.load_sessions(db)),
+    PanelProvider(reference_df),
+    strategy,
+    start,
+    end,
+    gross_vega=20_000.0,
 )
 print(BacktestResults(records_df).summary())
 ```
