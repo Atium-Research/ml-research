@@ -713,12 +713,16 @@ wheels = [
 [[package]]
 name = "malatium"
 version = "0.1.0"
-source = { git = "https://github.com/Atium-Research/malatium#95b55391a20692e594c1f4bc9a3e98d5a91fd669" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cvxpy" },
     { name = "dataframely" },
     { name = "numpy" },
     { name = "polars" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c6/06/d054ea64ab8f8f6e3d6d14003b52ea9d843bcbd22b17941e5bbc46b73825/malatium-0.1.0.tar.gz", hash = "sha256:e7e45f1e75473f42fb06bb6338647be2adb4356946c7687e3189c7b08b938abe", size = 89265, upload-time = "2026-09-13T17:38:33.772Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cc/df/14e5cec570a74e534f0a94e6f23840d17633e98265b137887638fb881945/malatium-0.1.0-py3-none-any.whl", hash = "sha256:ecd36980288386a9dff27ef1fe6b17683848c86350955aed68b042323535a31c", size = 19643, upload-time = "2026-09-13T17:38:32.453Z" },
 ]
 
 [package.optional-dependencies]
@@ -835,11 +839,15 @@ wheels = [
 [[package]]
 name = "ml-data-access"
 version = "0.1.0"
-source = { git = "https://github.com/Atium-Research/ml-data-access#a915122945f7f4e394bebf95754df17a5a54d38d" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "bear-lake" },
     { name = "polars" },
     { name = "python-dotenv" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7b/0d/fdac417bf072c259115f9e0d936280a8afcb2b5fd61c00ab6915459ac0bb/ml_data_access-0.1.0.tar.gz", hash = "sha256:418ec05f4ddadbd3af8f3e87d858241860f9bf80b2d3820b484a8343baacf2bc", size = 61553, upload-time = "2026-09-13T17:38:40.58Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3e/9c/5759674b60372792b5bd19132ef05426c1b16c844868ff2f9199f70e3fe6/ml_data_access-0.1.0-py3-none-any.whl", hash = "sha256:9019f72dc8c26ded3e68ec35a279252b66c9485cd542d36c2ee5792283971319", size = 7650, upload-time = "2026-09-13T17:38:39.325Z" },
 ]
 
 [[package]]
@@ -860,8 +868,8 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "malatium", extras = ["plot"], git = "https://github.com/Atium-Research/malatium" },
-    { name = "ml-data-access", git = "https://github.com/Atium-Research/ml-data-access" },
+    { name = "malatium", extras = ["plot"], specifier = ">=0.1.0" },
+    { name = "ml-data-access", specifier = ">=0.1.0" },
     { name = "polars", specifier = ">=1.30" },
 ]
 

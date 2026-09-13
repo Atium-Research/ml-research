@@ -19,9 +19,6 @@ dev = [
 [tool.uv]
 package = false
 
-[tool.uv.sources]
-malatium = { git = "https://github.com/Atium-Research/malatium" }
-ml-data-access = { git = "https://github.com/Atium-Research/ml-data-access" }
 
 [tool.ruff]
 line-length = 100
